@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `--download-delay` option which uses time module to take specified breaks between consecutive downloads (#102)
 
+### Fixed
+
+- Send scraperlib's default `User-Agent` when checking collection URLs, as `python-requests` default is rejected by some hosts, e.g. upload.wikimedia.org (#101)
+
 ## [1.2.1]
 
 ### Fixed

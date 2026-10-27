@@ -12,6 +12,7 @@ import zipfile
 from pathlib import Path
 
 import jinja2
+from zimscraperlib.constants import DEFAULT_USER_AGENT
 from zimscraperlib.download import requests, save_large_file
 from zimscraperlib.i18n import _, get_language_details, setlocale
 from zimscraperlib.image.convertion import create_favicon
@@ -350,7 +351,9 @@ class Nautilus:
                     continue
 
                 try:
-                    resp = requests.get(url, stream=True)
+                    resp = requests.get(
+                        url, stream=True, headers={"User-Agent": DEFAULT_USER_AGENT}
+                    )
                 except Exception as exc:
                     logger.error(f"- Connection Error: {url} ({exc})")
                     failed = True
