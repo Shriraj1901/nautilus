@@ -304,7 +304,9 @@ class Nautilus:
         # download if it's a URL
         if self.archive.startswith("http"):
             logger.info(f"Downloading archive at {self.archive}")
-            save_large_file(self.archive, self.archive_path)
+            save_large_file(
+                self.archive, self.archive_path, user_agent=DEFAULT_USER_AGENT
+            )
 
     def extract_to_fs(
         self, name: str, *, failsafe: bool | None = False
@@ -497,7 +499,7 @@ class Nautilus:
                             dir=self.build_dir, delete=False
                         ).name
                     )
-                    save_large_file(uri, fpath)
+                    save_large_file(uri, fpath, user_agent=DEFAULT_USER_AGENT)
                 else:
                     fpath = self.extract_to_fs(uri)
 
